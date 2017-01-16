@@ -6,6 +6,8 @@ import express from 'express';
 
 import redirects from './data/redirects.json';
 
+import voting_register from './voting';
+
 let app = express();
 
 redirects.forEach(function(redirect) {
@@ -21,6 +23,8 @@ app.get('/:page.html', function(req, res) {
 app.get('/downloads/:file', function(req, res) {
     res.redirect('/components/bitcoin-unlimited-web-downloads/' + req.params.file);
 });
+
+voting_register(app);
 
 app.use(express.static(path.join(__dirname, './public')));
 
