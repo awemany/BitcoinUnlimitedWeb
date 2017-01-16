@@ -10,7 +10,6 @@ export default function register(app) {
     /* Apply rate limiting to /voting/ part of the website, to hopefully keep
        the rest of the site up and running, if this part is attacked. */
 
-    // setup with default parameters as per https://www.npmjs.com/package/express-rate-limit 
     var rateLimiter = new RateLimit({
 	windowMs: 15 * 60 *1000,
 	max : 1000,
@@ -36,5 +35,4 @@ export default function register(app) {
 	    res.sendStatus(500);
 	});
 	req.pipe(r).pipe(res);
-    });
 }
